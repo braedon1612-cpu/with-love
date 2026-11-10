@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Three little memories</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100svh;display:grid;place-items:center;padding:24px;background:radial-gradient(ellipse at 75% 20%,#5d2b4b,#1c1024 70%);color:#fff1e5;font-family:Georgia,serif}
+main{width:min(100%,460px);padding:clamp(22px,7vw,42px);border:1px solid #e89caf80;border-radius:20px;background:#241229;box-shadow:0 20px 60px #130a18}
+.eyebrow{color:#ffb8c5;letter-spacing:.18em;text-transform:uppercase;font:600 11px system-ui;letter-spacing:.18em}
+h1{font-size:clamp(34px,8vw,49px);line-height:1;margin:16px 0}
+p{line-height:1.5} progress{width:100%;accent-color:#ffadc0}
+button,a{color:#fff1e5}
+button{width:100%;text-align:left;padding:13px 16px;margin:5px 0;border:1px solid #e89caf80;border-radius:9px;background:#42213c;cursor:pointer;font:600 15px system-ui}
+button:hover{background:#663356}button:focus-visible,a:focus-visible{outline:2px solid #ffadc0;outline-offset:3px}
+#feedback{color:#ffc0cd;min-height:1.5em}
+#open-letter{display:inline-block;padding:12px 18px;background:#ffb8c5;color:#2b1323;border-radius:100px;text-decoration:none}
+#open-letter[hidden]{display:none}
+</style>
+<main>
+<p class="eyebrow">A little game for you ♡</p>
+<h1>Three little memories</h1>
+<p>Get all three right to open my letter.</p>
+<progress value="0" max="3" aria-label="Correct answers"></progress>
+<p id="step"></p>
+<h2 id="question" tabindex="-1"></h2>
+<div id="choices"></div>
+<p id="feedback" role="status"></p>
+<a id="open-letter" href="./?v=sunday-letter" hidden>Open my letter ♡</a>
+<noscript><a href="./?v=sunday-letter">Open my letter</a></noscript>
+</main>
+<script>
+const quiz = [
+  {question:'How did we go out on the lake?', choices:['On a boat','On a paddleboard','On a jet ski'], answer:0},
+  {question:'Which birthday were we celebrating in the photo with the gold backdrop?', choices:['Your 20th','Your 21st','Your 22nd'], answer:1},
+  {question:'What was printed on our matching black shirts in the photo where you wore the big sunhat?', choices:['VW','Racing Club','GTI'], answer:2}
+];
+const progress = document.querySelector('progress');
+const step = document.querySelector('#step');
+const question = document.querySelector('#question');
+const choices = document.querySelector('#choices');
+const feedback = document.querySelector('#feedback');
+const letter = document.querySelector('#open-letter');
+let correct = 0;
+function showQuestion() {
+  const current = quiz[correct];
+  step.textContent = 'Memory ' + (correct + 1) + ' of ' + quiz.length;
+  question.textContent = current.question;
+  choices.replaceChildren();
+  current.choices.forEach((choice, index) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.textContent = choice;
+    button.addEventListener('click', () => {
+      if (index !== current.answer) {
+        feedback.textContent = 'Try again. You’ve got this ♡';
+        return;
+      }
+      correct++;
+      progress.value = correct;
+      if (correct < quiz.length) {
+        feedback.textContent = 'You got it ♡';
+        showQuestion();
+        question.focus();
+        return;
+      }
+      choices.replaceChildren();
+      step.textContent = 'Three out of three';
+      question.textContent = 'You got them all ♡';
+      feedback.textContent = 'Opening my letter…';
+      letter.hidden = false;
+      letter.focus();
+      setTimeout(() => location.assign(letter.href), 950);
+    });
+    choices.append(button);
+  });
+}
+showQuestion();
+</script>
+</html>
