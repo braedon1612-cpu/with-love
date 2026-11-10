@@ -53,6 +53,14 @@ h2{font-size:clamp(40px,8vw,68px);font-weight:400;line-height:1;letter-spacing:-
 .letter p{font-size:clamp(17px,3vw,20px);line-height:1.65;margin:0 0 16px}
 .letter .signature{margin:24px 0 0;color:#843252;font-style:italic}
 .kiss{color:#a03559;font-size:26px;letter-spacing:.16em;margin-top:8px}
+.orbit::after{animation:orbit-turn 42s linear infinite}
+.letter > p,.kiss{animation:ink-reveal .65s cubic-bezier(.2,.8,.2,1) both}
+.letter > p:nth-of-type(2){animation-delay:.08s}
+.letter > p:nth-of-type(3){animation-delay:.16s}
+.letter > p:nth-of-type(4){animation-delay:.24s}
+.letter > p:nth-of-type(5),.kiss{animation-delay:.32s}
+@keyframes orbit-turn{to{transform:rotate(360deg)}}
+@keyframes ink-reveal{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 @keyframes float{50%{transform:translateY(-11px) rotate(-2deg)}}
 @keyframes twinkle{from{opacity:.18;transform:scale(.7)}to{opacity:.95;transform:scale(1.3)}}
 @keyframes burst{from{opacity:0;transform:scale(.45)}25%{opacity:1}to{opacity:0;transform:translate(var(--x),var(--y)) rotate(var(--rot)) scale(.8)}}
@@ -94,9 +102,10 @@ h2{font-size:clamp(40px,8vw,68px);font-weight:400;line-height:1;letter-spacing:-
 <form method="dialog"><button class="close" aria-label="Close letter" autofocus>×</button></form>
 <div class="label">With all my love</div>
 <h2 id="letter-title">Hey, my love.</h2>
-<p>I’m sorry for my part in how things got between us. I wish I’d slowed down and listened instead of getting caught up in what I wanted to say. You deserved more patience from me.</p>
-<p>I miss you. I miss laughing with you and telling you little things about my day. I still catch myself thinking about what I’d tell you if you were here.</p>
-<p>I love you, and I’d like to show you that in the way I listen and how I treat you. If you ever feel like talking, I’d love to hear how you’ve been and how things felt for you. Take whatever time you need. I’ll respect what you decide.</p>
+<p>I keep thinking about the last time I saw you on Saturday, 7 November. I wish I could sit with you now and tell you this in person.</p>
+<p>I’m sorry for what happened on Sunday and for how I handled things at church. I’m sorry I messaged your mom, too. I should have left her out of it. I wish I’d taken a breath and thought about how my actions would affect you.</p>
+<p>I miss you. I miss your laugh and the way even an ordinary day felt better when I got to tell you about it. I love you, and I want to do better at showing you that, especially when things are hard.</p>
+<p>I’d love to sit down with you and hear how Sunday felt for you. I want to listen properly and own my part.</p>
 <p class="signature">All my love,<br>Me</p>
 <div class="kiss" aria-label="Love and kisses">♡ &nbsp; xoxo</div>
 </article>
@@ -126,6 +135,7 @@ function releaseHearts() {
     const angle = i * 2.39996;
     const distance = radius * (.55 + (i % 5) * .12);
     heart.className = 'particle';
+    heart.setAttribute('aria-hidden', 'true');
     heart.textContent = i % 3 ? '♡' : '♥';
     heart.style.setProperty('--x', `${Math.cos(angle) * distance}px`);
     heart.style.setProperty('--y', `${Math.sin(angle) * distance - 38}px`);
