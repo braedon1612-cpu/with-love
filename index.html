@@ -75,7 +75,7 @@ h2{font-size:clamp(40px,8vw,68px);font-weight:400;line-height:1;letter-spacing:-
 @keyframes portrait-float{50%{transform:translateY(-9px) rotate(-12deg)}}
 @media(max-width:720px){.scene .envelope{right:4%;bottom:4%}.portrait{width:60%;margin-bottom:6%}}
 .memory-link{display:block;width:fit-content;margin-top:17px;color:var(--muted);font:500 13px system-ui,sans-serif;text-underline-offset:5px}
-.memory-link:hover{color:var(--cream)}
+.memory-link{padding:10px 16px;border:1px solid #e89caf80;border-radius:100px;text-decoration:none}.memory-link:hover{color:var(--cream);background:#e89caf22}
 .memories{padding:clamp(55px,8vw,110px) max(6vw,24px);background:radial-gradient(ellipse at top,#412139,#160c19 68%)}
 .memories header{text-align:center;margin-bottom:34px}
 .memories .label{justify-content:center}
@@ -85,12 +85,12 @@ h2{font-size:clamp(40px,8vw,68px);font-weight:400;line-height:1;letter-spacing:-
 .photo:hover,.photo:focus-visible{transform:translateY(-4px);border-color:var(--rose)}
 .photo:focus-visible,.memory-link:focus-visible{outline:2px solid var(--cream);outline-offset:3px}
 .photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 38%;border-radius:3px}
-.photo:nth-child(3) img{object-position:50% 78%}
+.memory-card:nth-child(3) img{object-position:50% 78%}
 .photo-viewer{width:fit-content;background:#200e20;padding:8px;overflow:hidden}
 .photo-viewer img{display:block;max-width:min(86vw,950px);max-height:85dvh;object-fit:contain}
 .photo-viewer .close{position:absolute;top:12px;right:12px;background:#200e20;color:var(--cream);border-color:var(--rose)}
 @media(max-width:720px){.photo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.memory-link{margin-inline:auto}}
-.gallery-lock{max-width:420px;margin:auto;padding:24px;border:1px solid var(--rose);border-radius:8px;background:#342035}.gallery-lock div{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.gallery-lock input,.gallery-lock button{padding:11px;border-radius:5px;border:1px solid var(--rose)}.gallery-lock input{min-width:0;flex:1;background:#200e20;color:var(--cream)}.gallery-lock button{background:#ffb8c5;color:#2b1323}.gallery-lock p:not(:empty){margin-top:10px}</style>
+.memory-card{min-width:0;margin:0}.memory-card figcaption{padding:8px 3px 0;color:var(--muted);font-size:clamp(13px,2vw,16px);line-height:1.4;font-style:italic}</style>
 </head>
 <body>
 <main class="hero">
@@ -117,25 +117,25 @@ h2{font-size:clamp(40px,8vw,68px);font-weight:400;line-height:1;letter-spacing:-
 <path d="M250 43v30m-15-15h30m-110 45v16m-8-8h16m174 36v16m-8-8h16m-94 272v20m-10-10h20" stroke="#ffdfcc" stroke-width="1.4" stroke-linecap="round"/>
 <circle cx="198" cy="89" r="2" fill="#ffdfcc"/><circle cx="305" cy="98" r="2" fill="#ffdfcc"/><circle cx="293" cy="407" r="2" fill="#ffdfcc"/><circle cx="206" cy="407" r="2" fill="#ffdfcc"/>
 </svg>
-<figure class="portrait"><img src="main-photo.jpeg" alt="The two of us smiling together" fetchpriority="high"><figcaption>Us <span aria-hidden="true">♡</span></figcaption></figure><div class="envelope" aria-hidden="true"><div class="back"></div><div class="paper">♡</div><div class="front"></div><div class="flap"></div><div class="seal">♥</div></div>
+<figure class="portrait"><img src="main-photo.jpeg" alt="The two of us smiling together" fetchpriority="high"><figcaption>Your 21st birthday <span aria-hidden="true">♡</span></figcaption></figure><div class="envelope" aria-hidden="true"><div class="back"></div><div class="paper">♡</div><div class="front"></div><div class="flap"></div><div class="seal">♥</div></div>
 </div>
 </main>
 <section class="memories" id="memories" aria-labelledby="memories-title">
 <header><div class="label">A few of my favourites</div><h2 id="memories-title">Us, in pictures.</h2><p>These still make me smile.</p></header>
-<form class="gallery-lock"><label for="gallery-password">Gallery password</label><div><input id="gallery-password" type="password" required><button type="submit">Unlock our photos ♡</button></div><p role="status"></p></form><div class="photo-grid">
-
-
-
-
-
-
-
-
-
-
-
+<div class="photo-grid">
+<figure class="memory-card"><a class="photo" href="memory-1.jpg"><img src="memory-1.jpg" alt="Smiling together at a restaurant" loading="lazy" decoding="async"></a><figcaption>That smile across the table.</figcaption></figure>
+<figure class="memory-card"><a class="photo" href="memory-2.jpg"><img src="memory-2.jpg" alt="Together in matching racing shirts" loading="lazy" decoding="async"></a><figcaption>Matching shirts, obviously.</figcaption></figure>
+<figure class="memory-card"><a class="photo" href="memory-3.jpg"><img src="memory-3.jpg" alt="Sitting together on a boat at night" loading="lazy" decoding="async"></a><figcaption>Our boat ride on the lake. I still love the way the lights looked on the water.</figcaption></figure>
+<figure class="memory-card"><a class="photo" href="memory-4.jpg"><img src="memory-4.jpg" alt="A close selfie in soft light" loading="lazy" decoding="async"></a><figcaption>Us in our cosy clothes.</figcaption></figure>
+<figure class="memory-card"><a class="photo" href="memory-5.jpg"><img src="memory-5.jpg" alt="Getting ready to open a gift box" loading="lazy" decoding="async"></a><figcaption>Before you saw what was inside.</figcaption></figure>
+<figure class="memory-card"><a class="photo" href="memory-6.jpg"><img src="memory-6.jpg" alt="Smiling at the gifts inside the box" loading="lazy" decoding="async"></a><figcaption>Your smile when you opened it.</figcaption></figure>
+<figure class="memory-card"><a class="photo" href="memory-7.jpg"><img src="memory-7.jpg" alt="A selfie under warm lights" loading="lazy" decoding="async"></a><figcaption>A little sparkle.</figcaption></figure>
+<figure class="memory-card"><a class="photo" href="memory-8.jpg"><img src="memory-8.jpg" alt="Leaning together for a selfie" loading="lazy" decoding="async"></a><figcaption>One of my favourite selfies of us.</figcaption></figure>
+<figure class="memory-card"><a class="photo" href="memory-9.jpg"><img src="memory-9.jpg" alt="Together on a wooden bridge in the forest" loading="lazy" decoding="async"></a><figcaption>On the bridge, surrounded by green.</figcaption></figure>
+<figure class="memory-card"><a class="photo" href="memory-10.jpg"><img src="memory-10.jpg" alt="Together in matching GTI shirts" loading="lazy" decoding="async"></a><figcaption>Matching again, this time in GTI shirts.</figcaption></figure>
+<figure class="memory-card"><a class="photo" href="memory-11.jpg"><img src="memory-11.jpg" alt="A selfie in front of a blue and gold wall" loading="lazy" decoding="async"></a><figcaption>You and me, close as ever.</figcaption></figure>
 </div>
-<a class="memory-link" href="#memories">See our photos</a></section>
+</section>
 <dialog class="photo-viewer" aria-label="Photo viewer">
 <form method="dialog"><button class="close" aria-label="Close photo" autofocus>×</button></form>
 <img alt="">
@@ -153,7 +153,6 @@ h2{font-size:clamp(40px,8vw,68px);font-weight:400;line-height:1;letter-spacing:-
 <div class="kiss" aria-label="Love and kisses">♡ &nbsp; xoxo</div>
 </article>
 </dialog>
-<script src="gallery-data.js"></script>
 <script>
 const scene = document.querySelector('.scene');
 const hero = document.querySelector('.hero');
@@ -204,44 +203,17 @@ letter.addEventListener('close', () => {
   scene.classList.remove('unfold');
   openButton.focus();
 });
-const viewer = document.querySelector('.photo-viewer');
-const fullPhoto = viewer.querySelector('img');
-const form = document.querySelector('.gallery-lock');
-const status = form.querySelector('[role=status]');
-const grid = document.querySelector('.photo-grid');
-const bytes = value => Uint8Array.from(atob(value), char => char.charCodeAt(0));
-form.addEventListener('submit', async event => {
-  event.preventDefault();
-  const input = form.querySelector('input');
-  const button = form.querySelector('button');
-  button.disabled = true;
-  status.textContent = 'Opening our gallery…';
-  try {
-    const material = await crypto.subtle.importKey('raw', new TextEncoder().encode(input.value), 'PBKDF2', false, ['deriveKey']);
-    const key = await crypto.subtle.deriveKey({name:'PBKDF2', hash:'SHA-256', salt:bytes(archive.salt), iterations:archive.rounds}, material, {name:'AES-GCM', length:256}, false, ['decrypt']);
-    const photos = await Promise.all(archive.photos.map(photo => crypto.subtle.decrypt({name:'AES-GCM', iv:bytes(photo.iv)}, key, bytes(photo.data))));
-    photos.forEach((photo, index) => {
-      const tile = document.createElement('button');
-      tile.type = 'button';
-      tile.className = 'photo';
-      const image = new Image();
-      image.alt = archive.photos[index].alt;
-      image.src = URL.createObjectURL(new Blob([photo], {type:'image/jpeg'}));
-      tile.append(image);
-      tile.addEventListener('click', () => {
-        fullPhoto.src = image.src;
-        fullPhoto.alt = image.alt;
-        viewer.showModal();
-      });
-      grid.append(tile);
-    });
-    input.value = '';
-    form.hidden = true;
-    grid.querySelector('button').focus();
-  } catch (error) {
-    status.textContent = error.name === 'OperationError' ? 'That password didn’t match.' : 'The gallery could not open in this browser.';
-  } finally {
-    button.disabled = false;
-  }
-});
-</script></body></html>
+const photoViewer = document.querySelector('.photo-viewer');
+const fullPhoto = photoViewer.querySelector('img');
+for (const photo of document.querySelectorAll('.photo')) {
+  photo.addEventListener('click', event => {
+    if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    fullPhoto.src = photo.href;
+    fullPhoto.alt = photo.querySelector('img').alt;
+    photoViewer.showModal();
+  });
+}
+</script>
+</body>
+</html>
