@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#200e20">
+<title>With love</title>
+<style>
+:root{color-scheme:dark;--ink:#200e20;--rose:#e89caf;--cream:#fff1e5;--muted:#e1bccb}
+*{box-sizing:border-box}
+body{margin:0;background:#160c19;color:var(--cream);font-family:Georgia,serif}
+.hero{position:relative;isolation:isolate;display:grid;align-items:center;min-height:100svh;overflow:hidden;padding:60px max(6vw,24px);background:radial-gradient(ellipse at 70% 50%,#65304c 0%,#341b36 37%,#180e21 76%)}
+.frame{position:absolute;inset:14px;border:1px solid #f9c7b642;pointer-events:none;z-index:3}
+.layout{width:min(1140px,100%);margin:auto;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:34px}
+.copy{position:relative;z-index:2}
+.label{font:600 10px/1.5 system-ui,sans-serif;letter-spacing:.28em;text-transform:uppercase;color:#f8b9c7;display:flex;align-items:center;gap:12px}
+.label:before{content:"";width:24px;height:1px;background:var(--rose)}
+h1,h2,p{margin:0}
+h1{font-size:clamp(58px,8.5vw,127px);line-height:.89;letter-spacing:-.075em;font-weight:400;margin:24px 0}
+h1 em{display:block;color:#ffadbd;font-weight:400}
+.intro{max-width:29ch;font-size:clamp(17px,2vw,22px);line-height:1.5;color:var(--muted)}
+button{font:600 13px system-ui,sans-serif;cursor:pointer}
+.open{color:#2b1323;background:#ffb8c5;border:0;border-radius:100px;padding:15px 23px;margin-top:27px;box-shadow:0 0 32px #e18da842;transition:transform .25s,background .25s}
+.open:hover{background:#ffd3d9;transform:translateY(-3px)}
+button:focus-visible{outline:2px solid #fff;outline-offset:5px}
+.scene{position:relative;display:grid;place-items:center;aspect-ratio:1;perspective:900px}
+.orbit{position:absolute;width:95%;height:95%;border-radius:50%;border:1px solid #ffd9cb48;box-shadow:inset 0 0 55px #ed91b224,0 0 55px #ed91b222}
+.orbit:after,.orbit:before{content:"";position:absolute;border:1px solid #ffd9cb30;inset:5%;border-radius:50%}
+.orbit:after{inset:-5%;border-style:dotted}
+.garden{position:absolute;width:114%;height:114%;overflow:visible;pointer-events:none;filter:drop-shadow(0 0 12px #fa96be68)}
+.envelope{width:66%;aspect-ratio:1.52;position:relative;transform-style:preserve-3d;filter:drop-shadow(0 24px 22px #120714a8);animation:float 6s ease-in-out infinite}
+.back,.front,.flap,.paper{position:absolute;inset:0;border-radius:6px}
+.back{background:#a74b70}
+.paper{inset:6% 8%;display:grid;place-items:center;background:#fff3df;color:#823858;font-size:clamp(20px,5vw,48px);transform:translateY(0);transition:transform .75s cubic-bezier(.2,.8,.2,1)}
+.front{background:linear-gradient(138deg,#f4b0bc,#c66d8d 60%,#a34e73);clip-path:polygon(0 0,50% 53%,100% 0,100% 100%,0 100%)}
+.flap{transform-origin:top;clip-path:polygon(0 0,100% 0,50% 58%);background:linear-gradient(160deg,#ffcad0,#da82a1);transition:transform .75s cubic-bezier(.2,.8,.2,1)}
+.seal{position:absolute;left:50%;top:52%;display:grid;place-items:center;width:20%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;color:#ffd4da;background:radial-gradient(circle at 36% 27%,#bc5774,#7a2449);border:2px solid #df8fa8;box-shadow:0 5px 12px #6a234b87,inset 0 0 0 4px #9f385c;font-size:clamp(17px,4vw,38px);transition:opacity .35s}
+.unfold .flap{transform:rotateX(168deg)}
+.unfold .seal{opacity:0}
+.unfold .paper{transform:translateY(-51%);transition-delay:.27s}
+.star,.particle{position:absolute;pointer-events:none}
+.star{width:3px;height:3px;background:#ffdcdf;border-radius:50%;box-shadow:0 0 11px #ffb1cc;animation:twinkle var(--time) ease-in-out var(--delay) infinite alternate}
+.particle{left:50%;top:53%;color:#ffd0dc;font-size:var(--size);z-index:4;animation:burst 1.2s cubic-bezier(.16,.7,.24,1) both}
+dialog{color:#3c2030;background:#fff0e1;border:1px solid #e8aab4;width:min(620px,calc(100% - 28px));max-height:calc(100dvh - 28px);padding:0;border-radius:8px;box-shadow:0 25px 90px #100811ba;overscroll-behavior:contain}
+dialog[open]{animation:arrival .5s cubic-bezier(.2,.8,.2,1) both}
+dialog::backdrop{background:#170c1bd9;backdrop-filter:blur(8px)}
+.letter{padding:clamp(26px,6vw,65px);background:radial-gradient(ellipse at 95% 0%,#ffced2,transparent 42%),repeating-linear-gradient(0deg,#8d455304 0 1px,transparent 1px 5px)}
+.close{float:right;background:transparent;color:#62243e;border:1px solid #963d604f;border-radius:50%;width:38px;height:38px;font-size:19px}
+.close:focus-visible{outline-color:#782a4b}
+.letter .label{color:#843252}
+h2{font-size:clamp(40px,8vw,68px);font-weight:400;line-height:1;letter-spacing:-.06em;margin:18px 0 25px}
+.letter p{font-size:clamp(17px,3vw,20px);line-height:1.65;margin:0 0 16px}
+.letter .signature{margin:24px 0 0;color:#843252;font-style:italic}
+.kiss{color:#a03559;font-size:26px;letter-spacing:.16em;margin-top:8px}
+@keyframes float{50%{transform:translateY(-11px) rotate(-2deg)}}
+@keyframes twinkle{from{opacity:.18;transform:scale(.7)}to{opacity:.95;transform:scale(1.3)}}
+@keyframes burst{from{opacity:0;transform:scale(.45)}25%{opacity:1}to{opacity:0;transform:translate(var(--x),var(--y)) rotate(var(--rot)) scale(.8)}}
+@keyframes arrival{from{opacity:0;transform:translateY(25px) scale(.96)}to{opacity:1;transform:none}}
+@media(max-width:720px){.hero{padding:45px 29px 30px}.layout{grid-template-columns:1fr;gap:14px}.scene{width:min(82vw,340px);margin:auto}.copy{text-align:center}.label{justify-content:center}.intro{margin:auto}.letter .label{justify-content:flex-start}h1{margin:16px 0;font-size:clamp(51px,12vw,86px)}.open{margin-top:20px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.particle{display:none}}
+</style>
+</head>
+<body>
+<main class="hero">
+<div class="frame" aria-hidden="true"></div>
+<div class="layout">
+<section class="copy">
+<div class="label">A letter from me to you</div>
+<h1>I’m sorry.<em>I love you.</em></h1>
+<p class="intro">I’ve been thinking about what I want to say to you. So I wrote it down.</p>
+<button class="open" type="button" aria-haspopup="dialog">Open my letter <span aria-hidden="true">♡</span></button>
+</section>
+<div class="scene" aria-hidden="true">
+<div class="orbit"></div>
+<svg class="garden" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<g id="sprig" stroke="#eeb0bc" stroke-width="1.15" stroke-linecap="round">
+<path d="M248 426C179 414 92 351 81 231M199 410c-9-33-35-53-63-67m22 49c-34 2-67-11-93-39m53 3c1-33-10-62-31-81m-4-13c-20-21-29-44-25-68"/>
+<path fill="#c6799a" d="M135 344q21-2 27 20-21-1-27-20Zm-67 11q22-2 31 17-22 1-31-17Zm18-82q24 7 24 31-20-9-24-31Zm-29-78q12 13 8 28-16-10-8-28Zm121 196q22-1 30 18-22-1-30-18Z"/>
+</g>
+<g id="blossom" fill="#efacc0"><ellipse cy="-9" rx="4" ry="8"/><ellipse cy="-9" rx="4" ry="8" transform="rotate(72)"/><ellipse cy="-9" rx="4" ry="8" transform="rotate(144)"/><ellipse cy="-9" rx="4" ry="8" transform="rotate(216)"/><ellipse cy="-9" rx="4" ry="8" transform="rotate(288)"/><circle r="4" fill="#ffe6c8"/></g>
+</defs>
+<use href="#sprig"/><use href="#sprig" transform="translate(500 0) scale(-1 1)"/>
+<use href="#blossom" x="80" y="229"/><use href="#blossom" x="420" y="229"/><use href="#blossom" x="128" y="364"/><use href="#blossom" x="372" y="364"/>
+<path d="M250 43v30m-15-15h30m-110 45v16m-8-8h16m174 36v16m-8-8h16m-94 272v20m-10-10h20" stroke="#ffdfcc" stroke-width="1.4" stroke-linecap="round"/>
+<circle cx="198" cy="89" r="2" fill="#ffdfcc"/><circle cx="305" cy="98" r="2" fill="#ffdfcc"/><circle cx="293" cy="407" r="2" fill="#ffdfcc"/><circle cx="206" cy="407" r="2" fill="#ffdfcc"/>
+</svg>
+<div class="envelope"><div class="back"></div><div class="paper">♡</div><div class="front"></div><div class="flap"></div><div class="seal">♥</div></div>
+</div>
+</main>
+<dialog aria-labelledby="letter-title">
+<article class="letter">
+<form method="dialog"><button class="close" aria-label="Close letter" autofocus>×</button></form>
+<div class="label">With all my love</div>
+<h2 id="letter-title">Hey, my love.</h2>
+<p>I’m sorry for my part in how things got between us. I wish I’d slowed down and listened instead of getting caught up in what I wanted to say. You deserved more patience from me.</p>
+<p>I miss you. I miss laughing with you and telling you little things about my day. I still catch myself thinking about what I’d tell you if you were here.</p>
+<p>I love you, and I’d like to show you that in the way I listen and how I treat you. If you ever feel like talking, I’d love to hear how you’ve been and how things felt for you. Take whatever time you need. I’ll respect what you decide.</p>
+<p class="signature">All my love,<br>Me</p>
+<div class="kiss" aria-label="Love and kisses">♡ &nbsp; xoxo</div>
+</article>
+</dialog>
+<script>
+const scene = document.querySelector('.scene');
+const hero = document.querySelector('.hero');
+const openButton = document.querySelector('.open');
+const letter = document.querySelector('dialog');
+const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+
+for (let i = 0; i < 46; i++) {
+  const star = document.createElement('span');
+  star.className = 'star';
+  star.setAttribute('aria-hidden', 'true');
+  star.style.left = `${(i * 37.17 + 7) % 100}%`;
+  star.style.top = `${(i * 23.19 + 12) % 100}%`;
+  star.style.setProperty('--delay', `-${i % 7}s`);
+  star.style.setProperty('--time', `${2 + i % 5}s`);
+  hero.prepend(star);
+}
+
+function releaseHearts() {
+  const radius = scene.clientWidth * .5;
+  for (let i = 0; i < 20; i++) {
+    const heart = document.createElement('span');
+    const angle = i * 2.39996;
+    const distance = radius * (.55 + (i % 5) * .12);
+    heart.className = 'particle';
+    heart.textContent = i % 3 ? '♡' : '♥';
+    heart.style.setProperty('--x', `${Math.cos(angle) * distance}px`);
+    heart.style.setProperty('--y', `${Math.sin(angle) * distance - 38}px`);
+    heart.style.setProperty('--rot', `${i * 17}deg`);
+    heart.style.setProperty('--size', `${15 + i % 6 * 3}px`);
+    heart.addEventListener('animationend', () => heart.remove(), {once: true});
+    scene.append(heart);
+  }
+}
+
+openButton.addEventListener('click', () => {
+  if (scene.classList.contains('unfold') || letter.open) return;
+  if (reducedMotion.matches) {
+    letter.showModal();
+    return;
+  }
+  scene.classList.add('unfold');
+  window.setTimeout(releaseHearts, 360);
+  window.setTimeout(() => letter.showModal(), 1050);
+});
+letter.addEventListener('close', () => {
+  scene.classList.remove('unfold');
+  openButton.focus();
+});
+</script>
+</body>
+</html>
